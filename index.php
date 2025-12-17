@@ -1,21 +1,28 @@
 <?php
-// Tắt báo lỗi Fatal để trang web vẫn hiện giao diện khi chưa có DB online
 mysqli_report(MYSQLI_REPORT_OFF);
 
-// Thông số kết nối dựa trên docker-compose.yml
-$host = 'db'; 
-$user = 'root';
-$pass = 'rootpassword';
-$db   = 'shop_db';
+// 1. Kiểm tra môi trường
+if (isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1:8082')) {
+    // Nếu chạy DOCKER LOCAL
+    $host = 'db'; 
+    $user = 'root';
+    $pass = 'rootpassword';
+    $db   = 'shop_db';
+} else {
+    // Nếu chạy ONLINE (Thông số lấy từ Clever Cloud ở Bước 1)
+    $host = 'HOST_CỦA_BẠN'; 
+    $user = 'USER_CỦA_BẠN';
+    $pass = 'PASS_CỦA_BẠN';
+    $db   = 'DATABASE_CỦA_BẠN';
+}
 
-// Thêm dấu @ để ẩn cảnh báo hệ thống khi lỗi kết nối
 $conn = @new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
-    $db_status = "Đang chạy chế độ Preview (Chưa có DB Online)";
+    $db_status = "Lỗi kết nối: " . $conn->connect_error;
     $products = [];
 } else {
-    $db_status = "Kết nối Database thành công! (Docker)";
+    $db_status = "Kết nối Database thành công!";
     $result = $conn->query("SELECT * FROM phones");
     $products = ($result && $result->num_rows > 0) ? $result->fetch_all(MYSQLI_ASSOC) : [];
 }
