@@ -1,4 +1,6 @@
+version: '3.8'
 services:
+  # Container Cơ sở dữ liệu
   db:
     image: mysql:8.0
     environment:
@@ -6,7 +8,10 @@ services:
       MYSQL_DATABASE: shop_db
     volumes:
       - ./data.sql:/docker-entrypoint-initdb.d/data.sql
-  web:
+    restart: always
+
+  # Container Ứng dụng Web
+  web-phone:
     build: .
     ports:
       - "8082:80"
