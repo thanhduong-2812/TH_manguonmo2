@@ -1,5 +1,14 @@
 services:
-  shop-dien-thoai:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: shop_db
+    volumes:
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+  web:
     build: .
     ports:
       - "8082:80"
+    depends_on:
+      - db
