@@ -10,10 +10,10 @@ if (isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST'] == 'localhost' || $_S
     $db   = 'shop_db';
 } else {
     // Nếu chạy ONLINE (Thông số lấy từ Clever Cloud ở Bước 1)
-    $host = 'HOST_CỦA_BẠN'; 
-    $user = 'USER_CỦA_BẠN';
-    $pass = 'PASS_CỦA_BẠN';
-    $db   = 'DATABASE_CỦA_BẠN';
+    $host = 'b3yl5pdhjcswozvgdaqq-mysql.services.clever-cloud.com'; 
+    $user = 'uyzm4vveddconv5s';
+    $pass = 'bz1CWtiaUG8L0VUVVBnM';
+    $db   = 'b3yl5pdhjcswozvgdaqq';
 }
 
 $conn = @new mysqli($host, $user, $pass, $db);
