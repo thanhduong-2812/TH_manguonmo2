@@ -1,10 +1,12 @@
 {
-  "name": "th-manguonmo2",
+  "name": "techstore-project",
   "version": "1.0.0",
+  "description": "Project 2 deploy to Render",
+  "main": "index.html",
   "scripts": {
     "start": "npx serve ."
   },
   "dependencies": {
-    "serve": "^14.0.0"
+    "serve": "^14.2.0"
   }
 }
