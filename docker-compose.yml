@@ -1,0 +1,5 @@
+services:
+  shop-dien-thoai:
+    build: .
+    ports:
+      - "8082:80"
