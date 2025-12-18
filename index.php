@@ -35,7 +35,7 @@ if ($conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechStore - Project 2 Docker</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <h1>hom nay ngay may</h1>
+    <h1>Bai Kiem Tra-DH52200547 </h1>
 </head>
 <body class="bg-gray-100">
     <nav class="bg-blue-900 text-white p-4 flex justify-between items-center shadow-xl">
